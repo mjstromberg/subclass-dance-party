@@ -27,7 +27,25 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+
+  $('.lineUpDancersButton').on('click', function(event) {
+    var count = 0;
+    $('.right-shark').toggleClass('right-shark right-shark-static');
+    window.dancers.forEach(function(dancer, index) {
+      var height = $("body").height();
+      var width = $("body").width();
+      var dancersLength = window.dancers.length;
+      
+      if (dancer instanceof RightSharkDancer) {
+        height = height / 2;
+        width = (count / dancersLength) * width + width / 8;
+        dancer.lineUp(height, width);
+        count++;
+      }
+    });
+  });  
 });
 
