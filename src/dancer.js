@@ -1,6 +1,8 @@
 // Creates and returns a new this object that can step
 var Dancer = function(top, left, timeBetweenSteps) {
   // use jQuery to create an HTML <span> tag
+  this.top = top;
+  this.left = left;
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
@@ -28,5 +30,7 @@ Dancer.prototype.setPosition = function(top, left) {
 };
 
 Dancer.prototype.lineUp = function(top, left) {
+  this.top = top;
+  this.left = left;
   this.setPosition(top, left);
 };

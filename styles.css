@@ -1,5 +1,5 @@
 body, html{
-  height:100%;
+  height: 100%;
 }
 body{
   margin: 0px;
@@ -10,44 +10,70 @@ body, a:link, a:visited, a:active{
   color: lightblue;
 }
 .title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+  padding: 5px 12px;
+  float: right;
+}
+.lineUpDancersButton{
+  display: none;
+  padding: 5px 12px;
+  float: left;
+}
+.lineUpAllLeftSharkDancersButton{
+  display: none;
+  padding: 5px 12px;
+  float: left; 
 }
 .topbar{
-  height:32px;
+  height: 32px;
   background-color: #555;
 }
 .title{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
-}
-
-.square-dancer{
-  border:10px solid blue;
-  position:absolute;
-}
-
-.right-shark{
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  animation-iteration-count: infinite;
+  border: 10px solid red;
+  border-radius: 10px;
   position: absolute;
 }
-
+.square-dancer{
+  border: 10px solid blue;
+  position: absolute;
+}
+.katy-perry{
+  position: absolute;
+}
+.katy-perry-static{
+  position: absolute;
+}
+.left-shark{
+  position: absolute;
+}
+.right-shark{
+  position: absolute;
+}
 .right-shark-static{
   position: absolute;
 }
-
-.left-shark{
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  animation-iteration-count: infinite;
-  position: absolute;
+.left-shark-static{
+  position: absolute; 
+}
+.dancer-static{
+  position: absolute; 
+}
+.reset{
+ position: absolute; 
 }
 
-@keyframes shake {
+.shake{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  animation-iteration-count: infinite;
+}
+
+.wiggle{
+  animation: wiggle 0.5s infinite;
+}
+
+@keyframes shake{
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
   }
@@ -63,4 +89,10 @@ body, a:link, a:visited, a:active{
   40%, 60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+
+@keyframes wiggle{
+  0% {-webkit-transform:rotate(15deg);}
+  50% {-webkit-transform:rotate(-15deg);}
+  100% {-webkit-transform:rotate(15deg);}
 }
