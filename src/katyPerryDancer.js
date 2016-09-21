@@ -1,32 +1,60 @@
-var KatyPerryDancer = function(top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, timeBetweenSteps);
+var KatyPerryDancer = class extends Dancer {
+  constructor(top, left, timeBetweenSteps) {
+    super(top, left);
+    this.$node = $('<span class="katy-perry shake reset"><img src="katy-perry.png"></img></span>');
+    this.setPosition(top, left);
+  }
+  _makeNewPosition() {
+    var h = $(window).height() - 50;
+    var w = $(window).width() - 50;
 
-  this.$node = $('<span class="katy-perry shake reset"><img src="katy-perry.png"></img></span>');
-  this.setPosition(top, left);
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+
+    return [nh, nw];    
+  }
+  move() {
+    var newq = this._makeNewPosition();
+    var oldq = this.$node.offset();
+
+    this.$node.animate({top: newq[0], left: newq[1]}, 5000, (function() {
+      this.move();
+    }).bind(this));    
+  }
+  stop() {
+    this.$node.stop();  
+  }
 };
 
-KatyPerryDancer.prototype = Object.create(Dancer.prototype);
-KatyPerryDancer.prototype.constructor = KatyPerryDancer;
+// var KatyPerryDancer = function(top, left, timeBetweenSteps) {
+//   Dancer.call(this, top, left, timeBetweenSteps);
 
-KatyPerryDancer.prototype._makeNewPosition = function() {
-  var h = $(window).height() - 50;
-  var w = $(window).width() - 50;
+//   this.$node = $('<span class="katy-perry shake reset"><img src="katy-perry.png"></img></span>');
+//   this.setPosition(top, left);
+// };
 
-  var nh = Math.floor(Math.random() * h);
-  var nw = Math.floor(Math.random() * w);
+// KatyPerryDancer.prototype = Object.create(Dancer.prototype);
+// KatyPerryDancer.prototype.constructor = KatyPerryDancer;
 
-  return [nh, nw];
-};
+// KatyPerryDancer.prototype._makeNewPosition = function() {
+//   var h = $(window).height() - 50;
+//   var w = $(window).width() - 50;
 
-KatyPerryDancer.prototype.move = function() {
-  var newq = this._makeNewPosition();
-  var oldq = this.$node.offset();
+//   var nh = Math.floor(Math.random() * h);
+//   var nw = Math.floor(Math.random() * w);
 
-  this.$node.animate({top: newq[0], left: newq[1]}, 5000, (function() {
-    this.move();
-  }).bind(this));
-};
+//   return [nh, nw];
+// };
 
-KatyPerryDancer.prototype.stop = function() {
-  this.$node.stop();
-};
+// KatyPerryDancer.prototype.move = function() {
+//   var newq = this._makeNewPosition();
+//   var oldq = this.$node.offset();
+
+//   this.$node.animate({top: newq[0], left: newq[1]}, 5000, (function() {
+//     this.move();
+//   }).bind(this));
+// };
+
+// KatyPerryDancer.prototype.stop = function() {
+//   this.$node.stop();
+// };
